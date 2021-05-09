@@ -14,9 +14,13 @@ const Misiones = () => {
           <InputDate date="hasta" />
         </div>
         <div className="misiones-wrapper">
-          {misiones.map((mision, index) => (
-            <Mision mision={mision} key={index} />
-          ))}
+          {misiones.length ? (
+            misiones.map((mision, index) => (
+              <Mision mision={mision} key={index} />
+            ))
+          ) : (
+            <h1>No hay resultados para las fechas seleccionadas :(</h1>
+          )}
         </div>
       </section>
     </>

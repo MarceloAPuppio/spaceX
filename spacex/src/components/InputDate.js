@@ -3,6 +3,12 @@ import Context from "../context";
 import { getDate } from "../fetch";
 
 const InputDate = ({ date }) => {
+  const {
+    fechaDesde: desde,
+    setFechaDesde: desdeSetter,
+    fechaHasta: hasta,
+    setFechaHasta: hastaSetter,
+  } = useContext(Context);
   useEffect(() => {
     const [anio, mes, dia] = getDate();
     document.querySelectorAll('input[type="date"]')[0].value = `2008-09-28`;
@@ -12,12 +18,6 @@ const InputDate = ({ date }) => {
     hastaSetter(`${anio}-${mes}-${dia}`);
   }, []);
 
-  const {
-    fechaDesde: desde,
-    setFechaDesde: desdeSetter,
-    fechaHasta: hasta,
-    setFechaHasta: hastaSetter,
-  } = useContext(Context);
   console.log(desde, hasta);
   const handleChange = (e) => {
     if (date === "desde") {

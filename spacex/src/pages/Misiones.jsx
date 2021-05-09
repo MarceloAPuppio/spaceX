@@ -4,7 +4,7 @@ import Context from "../context";
 import Mision from "../components/mision";
 
 const Misiones = () => {
-  const [_, __, ___, ____, Misiones] = useContext(Context);
+  const { misiones } = useContext(Context);
   return (
     <>
       <section>
@@ -14,7 +14,7 @@ const Misiones = () => {
           <InputDate date="hasta" />
         </div>
         <div className="misiones-wrapper">
-          {Misiones.map((mision, index) => (
+          {misiones.map((mision, index) => (
             <Mision mision={mision} key={index} />
           ))}
         </div>

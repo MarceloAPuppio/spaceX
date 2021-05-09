@@ -1,12 +1,12 @@
 import React from "react";
 
 const Mision = ({ mision }) => {
-  const { mission_name, description } = mision;
+  const { title, details } = mision;
   return (
     <>
       <div className="mision">
-        <h2>{mission_name}</h2>
-        <p>{description}</p>
+        <h2>{title}</h2>
+        <p>{details}</p>
       </div>
     </>
   );

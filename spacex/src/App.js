@@ -6,11 +6,11 @@ import Context from "./context";
 import { fetchAll } from "./fetch";
 
 function App() {
-  const [misiones, setMisiones] = useState(["1"]);
-  const [fechaDesde, setFechaDesde] = useState(null);
+  const [misiones, setMisiones] = useState([]);
+  const [fechaDesde, setFechaDesde] = useState("2008-09-28");
   const [fechaHasta, setFechaHasta] = useState(null);
-  const getData = async (desde, hasta) => {
-    const Misiones = await fetchAll(desde, hasta);
+  const getData = async (filters) => {
+    const Misiones = await fetchAll(filters);
     setMisiones(Misiones);
   };
 
@@ -18,13 +18,20 @@ function App() {
     getData();
   }, []);
   useEffect(() => {
-    getData(fechaDesde, fechaHasta);
+    getData({ desde: fechaDesde, hasta: fechaHasta });
   }, [fechaDesde, fechaHasta]);
 
+  console.log("render");
   return (
     <div className="App">
       <Context.Provider
-        value={[fechaDesde, setFechaDesde, fechaHasta, setFechaHasta, misiones]}
+        value={{
+          fechaDesde,
+          setFechaDesde,
+          fechaHasta,
+          setFechaHasta,
+          misiones,
+        }}
       >
         <Layout>
           <Misiones />
